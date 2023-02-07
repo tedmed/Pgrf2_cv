@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Pgrf2_cv.iml" filepath="$PROJECT_DIR$/Pgrf2_cv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cv_1/cv_1.iml" filepath="$PROJECT_DIR$/cv_1/cv_1.iml" />
+    </modules>
+  </component>
+</project>
