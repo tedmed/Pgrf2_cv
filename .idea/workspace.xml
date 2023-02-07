@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="" />
+    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="Start">
+      <change afterPath="$PROJECT_DIR$/cv_1/cv_1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/raster/Raster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Col.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Identity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Rot2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotY.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotZ.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Scale2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Transl2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Identity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4OrthoRH.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4PerspRH.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotXYZ.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotY.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotZ.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Scale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Transl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4ViewRH.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Point2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Point3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Quat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Vec1D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Vec2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Vec3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2LPt6PgTU1FGJpMPmMRmztmcn0B" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -13,12 +61,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Moje/Desktop/Plocha/Skoola/UHK/4_LS/PGRF2/Pgrf2_cv/cv_1&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Moje\Desktop\Plocha\Skoola\UHK\4_LS\PGRF2\Pgrf2_cv\cv_1" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="cv_1 - AppStart" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="app.AppStart" />
+      <module name="cv_1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -28,6 +95,18 @@
       <option name="presentableId" value="Default" />
       <updated>1675784372342</updated>
     </task>
+    <task id="LOCAL-00001" summary="Start">
+      <created>1675784449208</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675784449208</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Start" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start" />
   </component>
 </project>
