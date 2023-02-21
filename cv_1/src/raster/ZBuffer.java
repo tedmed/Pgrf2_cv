@@ -18,7 +18,6 @@ public class ZBuffer {
         // načíst depthbuffer hodnotu na pozici x,y
         // porovnám ji s z (old), které vstupuje do této metody (new)
         // if new < old, tak old = new, obarvím pixel
-        System.out.println(x + "|" + y);
         if(depthBuffer.getValue(x, y) > z){
             imageBuffer.setValue(x, y, color);
             depthBuffer.setValue(x, y, z);
