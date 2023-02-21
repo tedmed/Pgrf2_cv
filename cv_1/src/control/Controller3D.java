@@ -1,22 +1,31 @@
 package control;
 
+import raster.ImageBuffer;
 import raster.Raster;
+import raster.ZBuffer;
+import render.TriangleRasterizer;
+import transforms.Col;
+import transforms.Point3D;
 import view.Panel;
 
 import java.awt.event.*;
 
 public class Controller3D implements Controller {
     private final Panel panel;
+    private final ZBuffer zBuffer;
+    private final TriangleRasterizer triangleRasterizer;
 
     public Controller3D(Panel panel) {
         this.panel = panel;
+        this.zBuffer = new ZBuffer(panel.getRaster());
+        this.triangleRasterizer = new TriangleRasterizer(zBuffer);
         initObjects(panel.getRaster());
         initListeners();
         redraw();
     }
 
-    public void initObjects(Raster raster) {
-        raster.setClearColor(0x101010);
+    public void initObjects(ImageBuffer raster) {
+        raster.setClearElement(new Col(0x101010));
     }
 
     @Override
@@ -32,6 +41,12 @@ public class Controller3D implements Controller {
 
     private void redraw() {
         panel.clear();
+
+        triangleRasterizer.rasterize(new Point3D(1,1,0), new Point3D(-1,0,0), new Point3D(0,-1,0), 0xff00ff);
+//        triangleRasterizer.rasterize(new Point3D(-1,1,0), new Point3D(1,0,0), new Point3D(0,-1,0), 0x00ff00);
+//        zBuffer.drawWithZTest(10,10,0.5,new Col(0x00ff00));
+//        zBuffer.drawWithZTest(10,10,0.2,new Col(0xff0000));
+//        zBuffer.drawWithZTest(10,10,0.1,new Col(0xffffff));
 
         panel.repaint();
     }
