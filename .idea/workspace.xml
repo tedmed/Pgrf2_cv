@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="cv_2" />
+    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="cv_2">
+      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Lerp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Part.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Solid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/model/TopologyType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Vectorizable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -29,15 +41,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "C:/Users/Moje/Desktop/Plocha/Skoola/UHK/4_LS/PGRF2/Pgrf2_cv/cv_1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Moje/Desktop/Plocha/Skoola/UHK/4_LS/PGRF2/Pgrf2_cv/cv_1&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Moje\Desktop\Plocha\Skoola\UHK\4_LS\PGRF2\Pgrf2_cv\cv_1" />
@@ -84,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676999752998</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="cv_2">
+      <created>1676999847220</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676999847220</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

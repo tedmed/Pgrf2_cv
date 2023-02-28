@@ -1,5 +1,6 @@
 package control;
 
+import model.Vertex;
 import raster.ImageBuffer;
 import raster.Raster;
 import raster.ZBuffer;
@@ -42,7 +43,7 @@ public class Controller3D implements Controller {
     private void redraw() {
         panel.clear();
 
-        triangleRasterizer.rasterize(new Point3D(1,1,0), new Point3D(-1,0,0), new Point3D(0,-1,0), 0xff00ff);
+        triangleRasterizer.rasterize(new Vertex(1,1,0), new Vertex(-1,0,0), new Vertex(0,-1,0), 0xff00ff);
 //        triangleRasterizer.rasterize(new Point3D(-1,1,0), new Point3D(1,0,0), new Point3D(0,-1,0), 0x00ff00);
 //        zBuffer.drawWithZTest(10,10,0.5,new Col(0x00ff00));
 //        zBuffer.drawWithZTest(10,10,0.2,new Col(0xff0000));
