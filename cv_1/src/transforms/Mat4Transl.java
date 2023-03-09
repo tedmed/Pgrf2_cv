@@ -1,27 +1,36 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 4x4:
- * matice translace  
+ * A 4x4 matrix of translation
+ * 
  * @author PGRF FIM UHK 
- * @version 2014
+ * @version 2016
  */
 public class Mat4Transl extends Mat4Identity {
 
 	/**
-	 * Vytvari transformacni matici 4x4 pro translaci ve 3D
+	 * Creates a 4x4 transformation matrix equivalent to translation in 3D
 	 * 
 	 * @param x
-	 *            posunuti na ose x
+	 *            translation along x-axis
 	 * @param y
-	 *            posunuti na ose y
+	 *            translation along y-axis
 	 * @param z
-	 *            posunuti na ose z
+	 *            translation along z-axis
 	 */
-	public Mat4Transl(double x, double y, double z) {
+	public Mat4Transl(final double x, final double y, final double z) {
 		mat[3][0] = x;
 		mat[3][1] = y;
 		mat[3][2] = z;
+	}
+	/**
+	 * Creates a 4x4 transformation matrix equivalent to translation in 3D
+	 * 
+	 * @param v
+	 *            translation vector
+	 */
+	public Mat4Transl(final Vec3D v) {
+		this(v.getX(), v.getY(), v.getZ());
 	}
 
 }

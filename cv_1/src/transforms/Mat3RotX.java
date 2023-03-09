@@ -1,23 +1,24 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 3x3: 
- * matice rotace kolem osy x 
+ * A 3x3 matrix of right-handed rotation about x-axis
+ * 
  * @author PGRF FIM UHK 
- * @version 2012
+ * @version 2016
  */
 public class Mat3RotX extends Mat3Identity {
 
 	/**
-	 * Vytvari transformacni matici 3x3 pro rotaci kolem osy x ve 3D
+	 * Creates a 3x3 transformation matrix equivalent to right-handed rotation
+	 * about x-axis
 	 * 
 	 * @param alpha
-	 *            uhel rotace v radianech
+	 *            rotation angle in radians
 	 */
-	public Mat3RotX(double alpha) {
-		mat[1][1] = (double) Math.cos(alpha);
-		mat[2][2] = (double) Math.cos(alpha);
-		mat[2][1] = (double) -Math.sin(alpha);
-		mat[1][2] = (double) Math.sin(alpha);
+	public Mat3RotX(final double alpha) {
+		mat[1][1] = Math.cos(alpha);
+		mat[2][2] = Math.cos(alpha);
+		mat[2][1] = -Math.sin(alpha);
+		mat[1][2] = Math.sin(alpha);
 	}
 }

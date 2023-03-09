@@ -1,5 +1,6 @@
 package render;
 
+import model.Lerp;
 import model.Vertex;
 import raster.ZBuffer;
 import transforms.Col;
@@ -7,68 +8,99 @@ import transforms.Point3D;
 import transforms.Vec3D;
 
 import java.awt.*;
-import java.util.*;
-import java.util.List;
 
 public class TriangleRasterizer {
     private final ZBuffer zBuffer;
+    private final Lerp<Vertex> lerp;
 
     public TriangleRasterizer(ZBuffer zBuffer) {
         this.zBuffer = zBuffer;
+        this.lerp = new Lerp<>();
     }
     public void rasterize(Vertex v1, Vertex v2, Vertex v3, int col){
 
-        // TODO: transformace ve Vertexu
-        Vec3D b = transformToWindow(v1.getPosition());
-        Vec3D c = transformToWindow(v2.getPosition());
-        Vec3D a = transformToWindow(v3.getPosition());
-        Vec3D pomoc;
+        //Done: transformace ve Vertexu
+        Vertex b = v1.transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
+        Vertex c = v2.transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
+        Vertex a = v3.transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
+        Vertex pomoc;
 
         Graphics g = zBuffer.getGraphics();
         g.setColor(new Color(col));
 
-        g.drawLine((int)a.x, (int)a.y, (int)b.x, (int)b.y);
-        g.drawLine((int)b.x, (int)b.y, (int)c.x, (int)c.y);
-        g.drawLine((int)c.x, (int)c.y, (int)a.x, (int)a.y);
+        g.drawLine((int)a.getPosition().getX(), (int)a.getPosition().getY(), (int)b.getPosition().getX(), (int)b.getPosition().getY());
+        g.drawLine((int)b.getPosition().getX(), (int)b.getPosition().getY(), (int)c.getPosition().getX(), (int)c.getPosition().getY());
+        g.drawLine((int)c.getPosition().getX(), (int)c.getPosition().getY(), (int)a.getPosition().getX(), (int)a.getPosition().getY());
 
         //Done: seřadit vrcholy podle Y, 3 podmínky
 
-        if(a.y > b.y) {
+        if(a.getPosition().getY() > b.getPosition().getY()) {
             pomoc = a;
-            a = new Vec3D(b.x, b.y, b.z);
+            a= b;
             b = pomoc;
         }
 
-        if(a.y > c.y) {
+        if(a.getPosition().getY() > c.getPosition().getY()) {
             pomoc = a;
-            a = new Vec3D(c.x, c.y, c.z);
+            a = c;
             c = pomoc;
         }
 
-        if(b.y > c.y) {
+        if(b.getPosition().getY() > c.getPosition().getY()) {
             pomoc = b;
-            b = new Vec3D(c.x, c.y, c.z);
+            b = c;
             c = pomoc;
         }
 
-        for (int y = (int)a.y; y <= b.y; y++){
+        for (int y = (int)a.getPosition().getY(); y <= b.getPosition().getY(); y++){
             // interpolační koeficient strany AB
-            double t1 = (y - a.y) / (b.y - a.y);
-            // vypočítám x1
-            int x1 = (int)((1 - t1) * a.x + t1 * b.x);
-            // TODO: použít lerp
+            double t1 = (y - a.getPosition().getY()) / (b.getPosition().getY() - a.getPosition().getY());
+            //Done: použít lerp
+            Vertex vAB = lerp.lerp(a, b,t1);
 
             // interpolační koeficient strany AC
-            double t2 = (y - a.y) / (c.y - a.y);
-            // vypočítám x2
-            int x2 = (int)((1 - t2) * a.x + t2 * c.x);
-            // TODO: použít lerp
+            double t2 = (y - a.getPosition().getY()) / (c.getPosition().getY() - a.getPosition().getY());
+            //Done: použít lerp
+            Vertex vAC = lerp.lerp(a, c,t2);
 
-            for(int x = x1; x <= x2; x++){
+            if(vAB.getPosition().getX() > vAC.getPosition().getX()){
+                Vertex pom = vAB;
+                vAB = vAC;
+                vAC = pom;
+            }
+            for(int x = (int)vAB.getPosition().getX(); x <= vAC.getPosition().getX(); x++){
                 // TODO: interpolační koeficient
-                // TODO: z, Col, uv, normála
+                double tf = (x-vAB.getPosition().getX())/(vAC.getPosition().getX() - vAB.getPosition().getX());
                 // TODO: použít lerp
-                zBuffer.drawWithZTest(x, y, 0, new Col(0xffff00));
+                Vertex v = lerp.lerp(vAB, vAC, tf);
+                // TODO: z, Col, uv, normála
+                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), new Col(0xffff00));
+            }
+        }
+
+        for (int y = (int)b.getPosition().getY(); y <= c.getPosition().getY(); y++){
+            // interpolační koeficient strany AB
+            double t1 = (y - b.getPosition().getY()) / (c.getPosition().getY() - b.getPosition().getY());
+            //Done: použít lerp
+            Vertex vBC = lerp.lerp(b, c,t1);
+
+            // interpolační koeficient strany AC
+            double t2 = (y - a.getPosition().getY()) / (c.getPosition().getY() - a.getPosition().getY());
+            //Done: použít lerp
+            Vertex vAC = lerp.lerp(a, c,t2);
+
+            if(vBC.getPosition().getX() > vAC.getPosition().getX()){
+                Vertex pom = vBC;
+                vBC = vAC;
+                vAC = pom;
+            }
+            for(int x = (int)vBC.getPosition().getX(); x <= vAC.getPosition().getX(); x++){
+                // TODO: interpolační koeficient
+                double tf = (x-vBC.getPosition().getX())/(vAC.getPosition().getX() - vBC.getPosition().getX());
+                // TODO: použít lerp
+                Vertex v = lerp.lerp(vBC, vAC, tf);
+                // TODO: z, Col, uv, normála
+                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), new Col(0xffff00));
             }
         }
     }

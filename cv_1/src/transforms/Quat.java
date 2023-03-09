@@ -1,30 +1,36 @@
 package transforms;
 
 import java.util.Locale;
+import java.util.Objects;
 
 /**
- * trida pro praci s kvaterniony 
+ * A quaternion with common operations, immutable 
+ * 
  * @author PGRF FIM UHK 
- * @version 2014
+ * @version 2016
  */
 
 public class Quat {
-	public double r, i, j, k;
+	protected final double r, i, j, k;
 
 	/**
-	 * Vytvari nulovy kvaternion
+	 * Creates a zero quaternion
 	 */
 	public Quat() {
 		i = j = k = r = 0.0f;
 	}
 
 	/**
-	 * Vytvari kvaternion (r,i,j,k)
-	 * 
+	 * Creates a quaternion with the given coordinates
+	 *
 	 * @param r
+	 *            r coordinate
 	 * @param i
+	 *            i coordinate
 	 * @param j
+	 *            j coordinate
 	 * @param k
+	 *            k coordinate
 	 */
 	public Quat(double r, double i, double j, double k) {
 		this.i = i;
@@ -34,9 +40,25 @@ public class Quat {
 	}
 
 	/**
-	 * Vytvari kvaternion
+	 * Creates a quaternion with the given coordinates
+	 *
+	 * @param r
+	 *            r coordinate
+	 * @param v
+	 *            ijk coordinates
+	 */
+	public Quat(double r, Vec3D v) {
+		this.i = v.getX();
+		this.j = v.getY();
+		this.k = v.getZ();
+		this.r = r;
+	}
+
+	/**
+	 * Creates a quaternion by cloning the given one
 	 * 
 	 * @param q
+	 *            quaternion to be cloned
 	 */
 	public Quat(Quat q) {
 		i = q.i;
@@ -44,91 +66,138 @@ public class Quat {
 		k = q.k;
 		r = q.r;
 	}
+	
+	/**
+	 * Returns the r coordinate
+	 * 
+	 * @return the r
+	 */
+	public double getR() {
+		return r;
+	}
 
 	/**
-	 * Scitani kvaternionu
+	 * Returns the i coordinate
+	 * 
+	 * @return the i
+	 */
+	public double getI() {
+		return i;
+	}
+
+	/**
+	 * Returns the j coordinate
+	 * 
+	 * @return the j
+	 */
+	public double getJ() {
+		return j;
+	}
+
+	/**
+	 * Returns the k coordinate
+	 *
+	 * @return the k
+	 */
+	public double getK() {
+		return k;
+	}
+
+	/**
+	 * Returns the ijk coordinate
+	 *
+	 * @return the ijk as new Vec3D instance
+	 */
+	public Vec3D getIJK() {
+		return new Vec3D(i,j,k);
+	}
+
+	/**
+	 * Returns the result of quaternion addition of the given quaternion
 	 * 
 	 * @param q
-	 * @return nova instance Quat
+	 *            quaternion to add
+	 * @return new Quat instance
 	 */
+
 	public Quat add(Quat q) {
 		return new Quat(r + q.r, i + q.i, j + q.j, k + q.k);
 	}
 
 	/**
-	 * Odcitani kvaternionu
+	 * Returns the result of quaternion subtraction of the given quaternion
 	 * 
 	 * @param q
-	 * @return nova instance Quat
+	 *            quaternion to subtract
+	 * @return new Quat instance
 	 */
 	public Quat sub(Quat q) {
 		return new Quat(r - q.r, i - q.i, j - q.j, k - q.k);
 	}
 
 	/**
-	 * Nasobeni kvaternionu skalarem
+	 * Returns the result of scalar multiplication
 	 * 
 	 * @param a
-	 * @return nova instance Quat
+	 *            scalar value of type double
+	 * @return new Quat instance
 	 */
 	public Quat mul(double a) {
 		return new Quat(a * r, a * i, a * j, a * k);
 	}
 
 	/**
-	 * Nasobeni kvaternionu kvaternionem zprava
-	 * 
+	 * Returns the result of right side quaternion multiplication by the given quaternion
+	 *
 	 * @param q
-	 * @return nova instance Quat
+	 *            quaternion
+	 * @return new Quat instance
 	 */
 	public Quat mulR(Quat q) {
-		return new Quat(this.r * q.r - this.i * q.i - this.j * q.j - this.k
-				* q.k, this.r * q.i + this.i * q.r + this.j * q.k - this.k
-				* q.j, this.r * q.j - this.i * q.k + this.j * q.r + this.k
-				* q.i, this.r * q.k + this.i * q.j - this.j * q.i + this.k
-				* q.r);
+		return new Quat(this.r * q.r - this.i * q.i - this.j * q.j - this.k * q.k,
+				this.r * q.i + this.i * q.r + this.j * q.k - this.k * q.j,
+				this.r * q.j - this.i * q.k + this.j * q.r + this.k * q.i,
+				this.r * q.k + this.i * q.j - this.j * q.i + this.k * q.r);
 	}
 
 	/**
-	 * Nasobeni kvaternionu kvaternionem zleva
+	 * Returns the result of left side quaternion multiplication by the given quaternion
 	 * 
 	 * @param q
-	 * @return nova instance Quat
+	 *            quaternion
+	 * @return new Quat instance
 	 */
 	public Quat mulL(Quat q) {
-		return new Quat(q.r * this.r - q.i * this.i - q.j * this.j - q.k
-				* this.k, q.r * this.i + q.i * this.r + q.j * this.k - q.k
-				* this.j, q.r * this.j + q.j * this.r + q.k * this.i - q.i
-				* this.k, q.r * this.k + q.k * this.r + q.i * this.j - q.j
-				* this.i);
+		return new Quat(q.r * this.r - q.i * this.i - q.j * this.j - q.k * this.k,
+				q.r * this.i + q.i * this.r + q.j * this.k - q.k * this.j,
+				q.r * this.j + q.j * this.r + q.k * this.i - q.i * this.k,
+				q.r * this.k + q.k * this.r + q.i * this.j - q.j * this.i);
 	}
 
 	/**
-	 * Nasobeni kvaternionu kvaternionem zprava
+	 * Returns the result of right side quaternion multiplication by the given quaternion
 	 * 
 	 * @param q
-	 * @return nova instance Quat
+	 *            quaternion
+	 * @return new Quat instance
 	 */
 	public Quat mul(Quat q) {
 		return mulR(q);
+		/* "shader" version
+		return new Quat(this.r*q.r - this.getIJK().dot(q.getIJK()),
+						q.getIJK().cross(this.getIJK())
+								.add(q.getIJK().mul(this.r))
+								.add(this.getIJK().mul(q.r))
+		);*/
 	}
 
 	/**
-	 * Velikost (norma) kvaternionu
+	 * Returns the inverse of this quaternion if it exists or an empty quaternion
 	 * 
-	 * @return velikost
+	 * @return new Quat instance
 	 */
-	public double norma() {
-		return Math.sqrt(r * r + i * i + j * j + k * k);
-	}
-
-	/**
-	 * Inverzni kvaternion
-	 * 
-	 * @return nova instance Quat
-	 */
-	public Quat inv() {
-		double norm = this.norma();
+	public Quat inverse() {
+		double norm = this.norm();
 		norm = norm * norm;
 		if (norm > 0)
 			return new Quat(this.r / norm, -this.i / norm, -this.j / norm,
@@ -138,9 +207,9 @@ public class Quat {
 	}
 
 	/**
-	 * Logaritmicka funkce kvaternionu
+	 * Return logarithm functions of this quaternion
 	 * 
-	 * @return nova instance Quat
+	 * @return new Quat instance
 	 */
 	public Quat log() {
 		if ((this.i == 0) && (this.i == 0) && (this.i == 0)) {
@@ -154,14 +223,14 @@ public class Quat {
 		} else {
 			double s = Math.sqrt(i * i + j * j + k * k);
 			double a = Math.atan2(s, r) / s;
-			return new Quat(Math.log(this.norma()), a * i, a * j, a * k);
+			return new Quat(Math.log(this.norm()), a * i, a * j, a * k);
 		}
 	}
 
 	/**
-	 * Exponencialni funkce kvaternionu
+	 * Return exponential functions of this quaternion
 	 * 
-	 * @return nova instance Quat
+	 * @return new Quat instance
 	 */
 	public Quat exp() {
 		if ((this.i == 0) && (this.j == 0) && (this.k == 0))
@@ -176,44 +245,55 @@ public class Quat {
 	}
 
 	/**
-	 * Opacny kvaternion
+	 * Returns the quaternion opposite to this quaternion
 	 * 
-	 * @return nova instance Quat
+	 * @return new Quat instance
 	 */
-	public Quat neg() {
+	public Quat opposite() {
 		return new Quat(-this.r, -this.i, -this.j, -this.k);
 	}
 
 	/**
-	 * Skalarni soucin kvaternionu
+	 * Returns the norm of this quaternion
 	 * 
-	 * @param Quat
-	 *            kvaternion
-	 * @return nova instance Quat
+	 * @return double-precision floating point value
+	 */
+	public double norm() {
+		return Math.sqrt(r * r + i * i + j * j + k * k);
+	}
+
+	/**
+	 * Returns the result of dot-product with the given quaternion
+	 * 
+	 * @param q
+	 *            quaternion 
+	 * @return double-precision floating point value
 	 */
 	public double dot(Quat q) {
 		return this.i * q.i + this.j * q.j + this.k * q.k + this.r * q.r;
 	}
-
+	
 	/**
-	 * Normalizace kvaternionu
+	 * Returns a normalized quaternion if possible (nonzero norm), 
+	 * empty quaternion otherwise
 	 * 
-	 * @return nova instance Quat
+	 * @return Quat instance
 	 */
-	public Quat renorm() {
-		double norm = this.norma();
+	public Quat normalized() {
+		double norm = this.norm();
 		if (norm > 0)
 			return new Quat(r / norm, i / norm, j / norm, k / norm);
-		else
-			return new Quat(0, 0, 0, 0);
+		return new Quat(0, 0, 0, 0);
 	}
 
 	/**
-	 * @return vraci Matici rotace
+	 * Creates a 4x4 transformation matrix equivalent to rotation defined by quaternion
+	 * 
+	 * @return new Mat4 instance
 	 */
 	public Mat4 toRotationMatrix() {
 		Mat4 res = new Mat4Identity();
-		this.renorm();
+		this.normalized();
 		res.mat[0][0] = 1 - 2 * (j * j + k * k);
 		res.mat[1][0] = 2 * (i * j - r * k);
 		res.mat[2][0] = 2 * (r * j + i * k);
@@ -229,10 +309,12 @@ public class Quat {
 	}
 
 	/**
-	 * Vraci kvaternion na zaklade Matice rotace
+	 * Creates a new quaternion equivalent to the rotation given by 
+	 * the 4x4 transformation matrix
 	 * 
 	 * @param mat
-	 * @return nova instance Quat
+	 *            4x4 matrix
+	 * @return new Quat instance
 	 */
 	public static Quat fromRotationMatrix(Mat4 mat) {
 		double r, i, j, k;
@@ -262,30 +344,30 @@ public class Quat {
 			j = (mat.mat[a][c] + mat.mat[c][a]) / (4 * r);
 			k = (mat.mat[b][c] - mat.mat[c][b]) / (4 * r);
 		}
-
 		return new Quat(r, i, j, k);
 	}
 
 	/**
-	 * Vraci Quat na zaklade Eulerovych uhlu rotace kolem jednotlivych os
+	 * Creates a new quaternion equivalent to the right-handed rotations given by 
+	 * the Euler angles about x, y and z axes chained in sequence in this order 
 	 * 
-	 * @param a
-	 *            uhel rotace kolem osy x
-	 * @param b
-	 *            uhel rotace kolem osy y
-	 * @param c
-	 *            uhel rotace kolem osy z
-	 * @return nova instance Quat
+	 * @param alpha
+	 *            rotation angle about x-axis, in radians
+	 * @param beta
+	 *            rotation angle about y-axis, in radians
+	 * @param gamma
+	 *            rotation angle about z-axis, in radians
+	 * @return new Quat instance
 	 */
-	public static Quat fromEulerAngles(double a, double b, double c) {
+	public static Quat fromEulerAngles(double alpha, double beta, double gamma) {
 		/*
 		 * Quat Qi = new Quat(Math.cos(a/2),Math.sin(a/2),0,0); Quat Qj = new
 		 * Quat(Math.cos(b/2),0,Math.sin(b/2),0); Quat Qk = new
 		 * Quat(Math.cos(c/2),0,0,Math.sin(c/2));
 		 */
-		Quat Qi = Quat.fromEulerAngle(a, 1, 0, 0);
-		Quat Qj = Quat.fromEulerAngle(b, 0, 1, 0);
-		Quat Qk = Quat.fromEulerAngle(c, 0, 0, 1);
+		Quat Qi = Quat.fromEulerAngle(alpha, 1, 0, 0);
+		Quat Qj = Quat.fromEulerAngle(beta, 0, 1, 0);
+		Quat Qk = Quat.fromEulerAngle(gamma, 0, 0, 1);
 
 		return new Quat(Qk.mul(Qj).mul(Qi));
 
@@ -293,17 +375,19 @@ public class Quat {
 	}
 
 	/**
-	 * Vraci Quat na zaklade uhlu a osy rotace
+	 * Creates a new quaternion equivalent to the rotations about axis given by 
+	 * vector x, y and z  
 	 * 
 	 * @param angle
-	 *            uhel rotace
+	 *            rotation angle in radians
+	 * 
 	 * @param x
-	 *            souradnice x osy rotace
+	 *            x vector coordinate
 	 * @param y
-	 *            souradnice x osy rotace
+	 *            y vector coordinate
 	 * @param z
-	 *            souradnice x osy rotace
-	 * @return nova instance Quat
+	 *            z vector coordinate
+	 * @return new Quat instance
 	 */
 	public static Quat fromEulerAngle(double angle, double x, double y, double z) {
 		return new Quat(Math.cos(angle / 2), Math.sin(angle / 2) * x,
@@ -311,9 +395,23 @@ public class Quat {
 	}
 
 	/**
-	 * Vraci uhel a osu rotace ve formatu Point3D:(uhel,osaX,osaY,osaZ)
+	 * Creates a new quaternion equivalent to the rotations about axis given by
+	 * vector x, y and z
+	 *
+	 * @param angle
+	 *            rotation angle in radians
+	 *
+	 * @param xyz
+	 *            vector coordinates
+	 */
+	public static Quat fromEulerAngle(double angle, Vec3D xyz) {
+		return fromEulerAngle(angle, xyz.getX(), xyz.getY(), xyz.getZ());
+	}
+
+	/**
+	 * Return the angle and axis rotation in format Point3D:(angle, x-axis, y-axis, z-axis)
 	 * 
-	 * @return nova instance Poin3D
+	 * @return new Poin3D instance 
 	 */
 	public Point3D toEulerAngle() {
 		double angle = 2 * Math.acos(r);
@@ -328,13 +426,13 @@ public class Quat {
 	}
 
 	/**
-	 * linearni interpolace pomoci kvaternionu Lerp(Q1,Q2,t)=(1-t)Q1+tQ2
+	 * Linear interpolation between two this and given quaternion Lerp(Q1,Q2,t)=(1-t)Q1+tQ2
 	 * 
 	 * @param q
-	 *            kvaternion
+	 *            quaternion
 	 * @param t
-	 *            vaha z intervalu <0;1>
-	 * @return nova instance Quat
+	 *            interpolation parameter in interval <0;1>
+	 * @return new Quat instance
 	 */
 	public Quat lerp(Quat q, double t) {
 		if (t >= 1)
@@ -346,13 +444,13 @@ public class Quat {
 	}
 
 	/**
-	 * Sfericka interpolace pomoci kvaternionu
+	 * Spherical interpolation between two this and given quaternion
 	 * 
 	 * @param q
-	 *            kvaternion
+	 *            quaternion
 	 * @param t
-	 *            vaha z intervalu <0;1>
-	 * @return nova instance Quat
+	 *            interpolation parameter in interval <0;1>
+	 * @return new Quat instance
 	 */
 	public Quat slerp(Quat q, double t) {
 		double c = this.dot(q);
@@ -369,18 +467,18 @@ public class Quat {
 		else if (t <= 0)
 			return new Quat(q);
 		else
-			return new Quat(this.renorm().mul(Math.sin((1 - t) * uhel) * s)
-					.add(q.renorm().mul(Math.sin(t * uhel) * s))).renorm();
+			return new Quat(this.normalized().mul(Math.sin((1 - t) * uhel) * s)
+					.add(q.normalized().mul(Math.sin(t * uhel) * s))).normalized();
 	}
 
 	/**
-	 * Kubicka interpolace pomoci kvaternionu
+	 * Cubic interpolation between two this and given quaternion
 	 * 
 	 * @param q
-	 *            kvaternion
+	 *            quaternion
 	 * @param t
-	 *            vaha z intervalu <0;1>
-	 * @return nova instance Quat
+	 *            interpolation parameter in interval <0;1>
+	 * @return new Quat instance
 	 */
 	public Quat squad(Quat q, Quat q1, Quat q2, double t) {
 		return new Quat(this.slerp(q, t).slerp(q1.slerp(q2, t),
@@ -388,8 +486,8 @@ public class Quat {
 	}
 
 	private Quat quadrangle(Quat q1, Quat q2) {
-		Quat s1 = this.inv().mul(q1);
-		Quat s2 = this.inv().mul(q2);
+		Quat s1 = this.inverse().mul(q1);
+		Quat s2 = this.inverse().mul(q2);
 		return new Quat((s1.log().add(s2.log()).mul(-1 / 4)).exp());
 	}
 
@@ -402,24 +500,84 @@ public class Quat {
 	}
 
 	/**
-	 * vypis kvaternionu do stringu
+	 * Compares this object against the specified object.
 	 * 
-	 * @return textovy retezec
+	 * @param obj
+	 *            the object to compare with.
+	 * @return {@code true} if the objects are the same; {@code false}
+	 *         otherwise.
 	 */
-	public String string() {
-		return String.format("[%4.1f;%4.1f;%4.1f;%4.1f]", r, i, j, k);
+	@Override
+	public boolean equals(Object obj) {
+		return (obj != null) && (obj instanceof Vec3D) 
+				&& (new Double(((Quat) obj).getR()).equals(getR()))
+				&& (new Double(((Quat) obj).getI()).equals(getI()))
+				&& (new Double(((Quat) obj).getJ()).equals(getJ()))
+				&& (new Double(((Quat) obj).getK()).equals(getK()));
 	}
 
 	/**
-	 * formatovany vypis kvaternionu do stringu
+     * Returns a hash code value for the object. 
+     * 
+     * @return  a hash code value for this object.
+     */
+    @Override
+	public int hashCode(){
+		return Objects.hash(this.getR(), this.getI(), this.getJ(), this.getK());
+	}
+    
+	/**
+	 * Compares this Quat against the specified Quat with epsilon.
 	 * 
-	 * @param format
-	 *            String jedne slozky
-	 * @return textovy retezec
+	 * @param quat
+	 *            the vector to compare with.
+	 * @param epsilon
+	 *            the maximum epsilon between actual and specified value for
+	 *            which both numbers are still considered equal
+	 * @return {@code true} if the objects are considered equal; {@code false}
+	 *         otherwise.
+	 */
+	public boolean eEquals(Quat quat, double epsilon) {
+		return (quat != null) 
+				&& Compare.eEquals(getR(), quat.getR(), epsilon)
+				&& Compare.eEquals(getI(), quat.getI(), epsilon)
+				&& Compare.eEquals(getJ(), quat.getJ(), epsilon)
+				&& Compare.eEquals(getK(), quat.getK(), epsilon);
+	}
+
+	/**
+	 * Compares this Quat against the specified Quat with epsilon.
+	 * 
+	 * @param quat
+	 *            the vector to compare with.
+	 * @return {@code true} if the objects are considered equal; {@code false}
+	 *         otherwise.
+	 */
+	public boolean eEquals(Quat quat) {
+		return eEquals(quat, Compare.EPSILON);
+	}
+	
+	/**
+	 * Returns String representation of this quaternion
+	 * 
+	 * @return floating-point value in parentheses
 	 */
 	@Override
 	public String toString() {
-		return String.format(Locale.US, "(%4.1f,%4.1f,%4.1f,%4.1f)",r,i,j,k);
+		return toString("%4.1f");
+	}
+
+	/**
+	 * Returns String representation of this quaternion with coordinate formated
+	 * according to the given format, see
+	 * {@link String#format(String, Object...)}
+	 * 
+	 * @param format
+	 *            String format applied to the coordinate
+	 * @return floating-point value in parentheses, useful in constructor
+	 */
+	public String toString(String format) {
+		return String.format(Locale.US, "("+format+","+format+","+format+","+format+")",r,i,j,k);
 	}
 	
 	

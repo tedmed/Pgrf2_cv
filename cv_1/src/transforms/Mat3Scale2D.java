@@ -1,24 +1,44 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 3x3: 
- * matice zmeny meritka ve 2D 
+ * A 3x3 matrix of 2D scaling
+ * 
  * @author PGRF FIM UHK 
- * @version 2012
+ * @version 2016
  */
 public class Mat3Scale2D extends Mat3Identity {
 
 	/**
-	 * Vytvari transformacni matici 3x3 pro zmenu meritka ve 2D
+	 * Creates a 3x3 transformation matrix equivalent to scaling in 2D
 	 * 
 	 * @param x
-	 *            zvetseni/zmenseni na ose x
+	 *            x-axis scale factor
 	 * @param y
-	 *            zvetseni/zmenseni na ose y
+	 *            y-axis scale factor
 	 */
-	public Mat3Scale2D(double x, double y) {
+	public Mat3Scale2D(final double x, final double y) {
 		mat[0][0] = x;
 		mat[1][1] = y;
+	}
+
+	/**
+	 * Creates a 3x3 transformation matrix equivalent to uniform scaling in 2D
+	 * 
+	 * @param scale
+	 *            x,y -axis scale factor
+	 */
+	public Mat3Scale2D(final double scale) {
+		this(scale, scale);
+	}
+
+	/**
+	 * Creates a 3x3 transformation matrix equivalent to scaling in 2D
+	 * 
+	 * @param v
+	 *            vector scale factor
+	 */
+	public Mat3Scale2D(final Vec2D v) {
+		this(v.getX(), v.getY());
 	}
 
 }

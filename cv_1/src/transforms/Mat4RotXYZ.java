@@ -1,27 +1,26 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 4x4:
- * matice rotace postupne kolem osy x, y, a z  
+ * A 4x4 matrix of sequential right-handed rotation about x, y and z axes
+ * 
  * @author PGRF FIM UHK 
- * @version 2014
+ * @version 2016
  */
-public class Mat4RotXYZ extends Mat4Identity {
+public class Mat4RotXYZ extends Mat4 {
 
 	/**
-	 * Vytvari transformacni matici 4x4 pro rotaci kolem osy X,Y,Z ve 3D
+	 * Creates a 4x4 transformation matrix equivalent to right-handed rotations
+	 * about x, y and z axes chained in sequence in this order
 	 * 
 	 * @param alpha
-	 *            uhel rotace v radianech
-	 * @param alpha
-	 *            uhel rotace v radianech
-	 * @param alpha
-	 *            uhel rotace v radianech
+	 *            rotation angle about x-axis, in radians
+	 * @param beta
+	 *            rotation angle about y-axis, in radians
+	 * @param gamma
+	 *            rotation angle about z-axis, in radians
 	 */
-	public Mat4RotXYZ(double alpha, double beta, double gama) {
-		Mat4 M=new Mat4RotX(alpha).mul(new Mat4RotY(beta)).mul(new Mat4RotZ(gama));
-		for(int i=0;i<4;i++)
-			for(int j=0;j<4;j++)
-				this.mat[i][j]=M.mat[i][j];
+	public Mat4RotXYZ(final double alpha, final double beta, final double gamma) {
+		super(new Mat4RotX(alpha).mul(new Mat4RotY(beta)).mul(
+				new Mat4RotZ(gamma)));
 	}
 }

@@ -26,13 +26,13 @@ public class Vertex implements Vectorizable<Vertex>{
     @Override
     public Vertex mul(double k) {
         // TODO: k přinásobit ke všem atributům
-        return null;
+        return new Vertex(position.getX() * k , position.getY() * k, position.getZ() * k);
     }
 
     @Override
     public Vertex add(Vertex vertex) {
         // TODO: přičte jednotlivé atributy
-        return null;
+        return new Vertex(position.getX() + vertex.getPosition().getX(), position.getY() + vertex.getPosition().getY(), position.getZ() + vertex.getPosition().getZ());
     }
 
     // TODO: společný IF?
@@ -44,7 +44,12 @@ public class Vertex implements Vectorizable<Vertex>{
                 .mul(new Vec3D(1,-1,1))
                 .add(new Vec3D(1,1,0))
                 .mul(new Vec3D((width-1)/2., (height-1)/2., 1));
-        return new Vertex(p.x, p.y, p.z);
+        return new Vertex(p.getX(), p.getY(), p.getZ());
     }
+
+    public Vertex dehomog(Vertex v) {
+        return v.mul(1.0/v.getPosition().getW());
+    }
+
 
 }

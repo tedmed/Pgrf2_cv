@@ -1,15 +1,15 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 4x4:
- * jednotkova matice
+ * A 4x4 identity matrix
+ * 
  * @author PGRF FIM UHK 
- * @version 2014
+ * @version 2016
  */
 public class Mat4Identity extends Mat4 {
 
 	/**
-	 * Vytvari jednotkovou matici 4x4
+	 * Creates an identity 4x4 matrix
 	 */
 	public Mat4Identity() {
 		for (int i = 0; i < 4; i++)

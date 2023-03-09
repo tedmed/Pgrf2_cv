@@ -1,27 +1,47 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 4x4:
- * matice transformace zmeny meritka  
+ * A 4x4 matrix of 3D scaling
+ * 
  * @author PGRF FIM UHK 
- * @version 2014
+ * @version 2016
  */
 public class Mat4Scale extends Mat4Identity {
 
 	/**
-	 * Vytvari transformacni matici 4x4 pro zmenu meritka ve 3D
+	 * Creates a 4x4 transformation matrix equivalent to scaling in 3D
 	 * 
 	 * @param x
-	 *            zvetseni/zmenseni na ose x
+	 *            x-axis scale factor
 	 * @param y
-	 *            zvetseni/zmenseni na ose y
+	 *            y-axis scale factor
 	 * @param z
-	 *            zvetseni/zmenseni na ose z
+	 *            z-axis scale factor
 	 */
-	public Mat4Scale(double x, double y, double z) {
+	public Mat4Scale(final double x, final double y, final double z) {
 		mat[0][0] = x;
 		mat[1][1] = y;
 		mat[2][2] = z;
+	}
+
+	/**
+	 * Creates a 4x4 transformation matrix equivalent to uniform scaling in 3D
+	 * 
+	 * @param scale
+	 *            x,y,z -axis scale factor
+	 */
+	public Mat4Scale(final double scale) {
+		this(scale, scale, scale);
+	}
+
+	/**
+	 * Creates a 4x4 transformation matrix equivalent to scaling in 3D
+	 * 
+	 * @param v
+	 *            vector scale factor
+	 */
+	public Mat4Scale(final Vec3D v) {
+		this(v.getX(), v.getY(), v.getZ());
 	}
 
 }

@@ -4,16 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="cv_2">
-      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Lerp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Part.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Solid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cv_1/src/model/TopologyType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Vectorizable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" afterDir="false" />
+    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="cv_3">
+      <change afterPath="$PROJECT_DIR$/cv_1/src/Objects/Arrow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/render/LineRasterizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/render/Renderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Bicubic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Compare.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Cubic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Rot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/model/Lerp.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/model/Lerp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/model/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/model/Part.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Bikubika.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Col.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Col.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Kubika.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Identity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Identity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Rot2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Rot2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotX.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotY.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3RotZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Scale2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Scale2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Transl2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat3Transl2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Identity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Identity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4OrthoRH.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4OrthoRH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4PerspRH.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4PerspRH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotX.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotXYZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotXYZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotY.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4RotZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Scale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Transl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4Transl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Mat4ViewRH.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Mat4ViewRH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Point2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Point2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Point3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Quat.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Quat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Vec1D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Vec1D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Vec2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Vec2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/transforms/Vec3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/transforms/Vec3D.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +57,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -41,17 +74,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Moje/Desktop/Plocha/Skoola/UHK/4_LS/PGRF2/Pgrf2_cv/cv_1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "C:/Users/Moje/Desktop/Plocha/Skoola/UHK/4_LS/PGRF2/Pgrf2_cv/cv_1/src"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Moje\Desktop\Plocha\Skoola\UHK\4_LS\PGRF2\Pgrf2_cv\cv_1\src" />
       <recent name="C:\Users\Moje\Desktop\Plocha\Skoola\UHK\4_LS\PGRF2\Pgrf2_cv\cv_1" />
     </key>
   </component>
@@ -103,12 +137,20 @@
       <option name="project" value="LOCAL" />
       <updated>1676999847220</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="cv_3">
+      <created>1677602446267</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677602446267</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start" />
     <MESSAGE value="cv_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="cv_2" />
+    <MESSAGE value="cv_3" />
+    <option name="LAST_COMMIT_MESSAGE" value="cv_3" />
   </component>
 </project>

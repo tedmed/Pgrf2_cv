@@ -1,24 +1,34 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 3x3: 
- * matice translace ve 2D 
+ * A 3x3 matrix of 2D translation
+ * 
  * @author PGRF FIM UHK 
- * @version 2012
+ * @version 2016
  */
 public class Mat3Transl2D extends Mat3Identity {
 
 	/**
-	 * Vytvari transformacni matici 3x3 pro translaci ve 2D
+	 * Creates a 3x3 transformation matrix equivalent to translation in 2D
 	 * 
 	 * @param x
-	 *            posunuti na ose x
+	 *            translation along x-axis
 	 * @param y
-	 *            posunuti na ose y
+	 *            translation along y-axis
 	 */
-	public Mat3Transl2D(double x, double y) {
+	public Mat3Transl2D(final double x, final double y) {
 		mat[2][0] = x;
 		mat[2][1] = y;
+	}
+	
+	/**
+	 * Creates a 3x3 transformation matrix equivalent to translation in 2D
+	 * 
+	 * @param v
+	 *            translation vector
+	 */
+	public Mat3Transl2D(final Vec2D v) {
+		this(v.getX(), v.getY());
 	}
 
 }

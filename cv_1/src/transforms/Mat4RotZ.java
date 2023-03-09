@@ -1,23 +1,24 @@
 package transforms;
 
 /**
- * trida pro praci s maticemi 4x4:
- * matice rotace kolem osy z  
+ * A 4x4 matrix of right-handed rotation about z-axis
+ * 
  * @author PGRF FIM UHK 
- * @version 2014
+ * @version 2016
  */
 public class Mat4RotZ extends Mat4Identity {
 
 	/**
-	 * Vytvari transformacni matici 4x4 pro rotaci kolem osy Z ve 3D
+	 * Creates a 4x4 transformation matrix equivalent to right-handed rotation
+	 * about z-axis
 	 * 
 	 * @param alpha
-	 *            uhel rotace v radianech
+	 *            rotation angle in radians
 	 */
-	public Mat4RotZ(double alpha) {
-		mat[0][0] = (double) Math.cos(alpha);
-		mat[1][1] = (double) Math.cos(alpha);
-		mat[1][0] = (double) -Math.sin(alpha);
-		mat[0][1] = (double) Math.sin(alpha);
+	public Mat4RotZ(final double alpha) {
+		mat[0][0] = Math.cos(alpha);
+		mat[1][1] = Math.cos(alpha);
+		mat[1][0] = -Math.sin(alpha);
+		mat[0][1] = Math.sin(alpha);
 	}
 }
