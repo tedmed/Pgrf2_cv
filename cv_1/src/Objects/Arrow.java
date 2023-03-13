@@ -4,14 +4,16 @@ import model.Part;
 import model.Solid;
 import model.TopologyType;
 import model.Vertex;
+import transforms.Col;
 
 public class Arrow extends Solid {
     public Arrow(){
-        vertexBuffer.add(new Vertex(0,0,0.5));
-        vertexBuffer.add(new Vertex(0.75,0,0.5));
-        vertexBuffer.add(new Vertex(1,0,0.5));
-        vertexBuffer.add(new Vertex(0.75,0.2,0.5));
-        vertexBuffer.add(new Vertex(0.75,-0.2,0.5));
+        Col col = new Col(0xff0000);
+        vertexBuffer.add(new Vertex(0,0,0.5, col));
+        vertexBuffer.add(new Vertex(0.75,0,0.5, col));
+        vertexBuffer.add(new Vertex(1,0,0.5, col));
+        vertexBuffer.add(new Vertex(0.75,0.2,0.5, col));
+        vertexBuffer.add(new Vertex(0.75,-0.2,0.5, col));
 
 
         indexBuffer.add(0);

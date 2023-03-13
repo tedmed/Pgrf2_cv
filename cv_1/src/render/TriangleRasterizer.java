@@ -17,26 +17,26 @@ public class TriangleRasterizer {
         this.zBuffer = zBuffer;
         this.lerp = new Lerp<>();
     }
-    public void rasterize(Vertex v1, Vertex v2, Vertex v3, int col){
+    public void rasterize(Vertex v1, Vertex v2, Vertex v3){
 
         //Done: transformace ve Vertexu
-        Vertex b = v1.transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
-        Vertex c = v2.transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
-        Vertex a = v3.transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
-        Vertex pomoc;
-
-        Graphics g = zBuffer.getGraphics();
-        g.setColor(new Color(col));
-
-        g.drawLine((int)a.getPosition().getX(), (int)a.getPosition().getY(), (int)b.getPosition().getX(), (int)b.getPosition().getY());
-        g.drawLine((int)b.getPosition().getX(), (int)b.getPosition().getY(), (int)c.getPosition().getX(), (int)c.getPosition().getY());
-        g.drawLine((int)c.getPosition().getX(), (int)c.getPosition().getY(), (int)a.getPosition().getX(), (int)a.getPosition().getY());
+        Vertex a = v1.dehomog(v1).transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
+        Vertex b = v2.dehomog(v2).transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
+        Vertex c = v3.dehomog(v3).transformToWindow(zBuffer.getWidth(), zBuffer.getHeight());
+//
+//        Graphics g = zBuffer.getGraphics();
+//        g.setColor(new Color(col));
+//
+//        g.drawLine((int)a.getPosition().getX(), (int)a.getPosition().getY(), (int)b.getPosition().getX(), (int)b.getPosition().getY());
+//        g.drawLine((int)b.getPosition().getX(), (int)b.getPosition().getY(), (int)c.getPosition().getX(), (int)c.getPosition().getY());
+//        g.drawLine((int)c.getPosition().getX(), (int)c.getPosition().getY(), (int)a.getPosition().getX(), (int)a.getPosition().getY());
 
         //Done: seřadit vrcholy podle Y, 3 podmínky
 
+        Vertex pomoc;
         if(a.getPosition().getY() > b.getPosition().getY()) {
             pomoc = a;
-            a= b;
+            a = b;
             b = pomoc;
         }
 
@@ -52,7 +52,7 @@ public class TriangleRasterizer {
             c = pomoc;
         }
 
-        for (int y = (int)a.getPosition().getY(); y <= b.getPosition().getY(); y++){
+        for (int y = Math.max((int)a.getPosition().getY()+1,0); y <= Math.min(b.getPosition().getY(),zBuffer.getHeight()-1); y++){
             // interpolační koeficient strany AB
             double t1 = (y - a.getPosition().getY()) / (b.getPosition().getY() - a.getPosition().getY());
             //Done: použít lerp
@@ -68,17 +68,17 @@ public class TriangleRasterizer {
                 vAB = vAC;
                 vAC = pom;
             }
-            for(int x = (int)vAB.getPosition().getX(); x <= vAC.getPosition().getX(); x++){
-                // TODO: interpolační koeficient
+            for(int x = Math.max((int)vAB.getPosition().getX(),0); x <= Math.min(vAC.getPosition().getX(),zBuffer.getWidth()-1); x++){
+                //Done: interpolační koeficient
                 double tf = (x-vAB.getPosition().getX())/(vAC.getPosition().getX() - vAB.getPosition().getX());
-                // TODO: použít lerp
+                //Done: použít lerp
                 Vertex v = lerp.lerp(vAB, vAC, tf);
                 // TODO: z, Col, uv, normála
-                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), new Col(0xffff00));
+                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), v.getColor());
             }
         }
 
-        for (int y = (int)b.getPosition().getY(); y <= c.getPosition().getY(); y++){
+        for (int y = Math.max((int)b.getPosition().getY()+1,0); y <= Math.min(c.getPosition().getY(),zBuffer.getHeight()-1); y++){
             // interpolační koeficient strany AB
             double t1 = (y - b.getPosition().getY()) / (c.getPosition().getY() - b.getPosition().getY());
             //Done: použít lerp
@@ -94,21 +94,14 @@ public class TriangleRasterizer {
                 vBC = vAC;
                 vAC = pom;
             }
-            for(int x = (int)vBC.getPosition().getX(); x <= vAC.getPosition().getX(); x++){
-                // TODO: interpolační koeficient
+            for(int x = Math.max((int)vBC.getPosition().getX(),0); x <= Math.min(vAC.getPosition().getX(),zBuffer.getWidth()-1); x++){
+                //Done: interpolační koeficient
                 double tf = (x-vBC.getPosition().getX())/(vAC.getPosition().getX() - vBC.getPosition().getX());
-                // TODO: použít lerp
+                //Done: použít lerp
                 Vertex v = lerp.lerp(vBC, vAC, tf);
                 // TODO: z, Col, uv, normála
-                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), new Col(0xffff00));
+                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), v.getColor());
             }
         }
-    }
-
-    private Vec3D transformToWindow(Point3D p){
-        return new Vec3D(p)
-                .mul(new Vec3D(1,-1,1))
-                .add(new Vec3D(1,1,0))
-                .mul(new Vec3D((zBuffer.getWidth()-1)/2., (zBuffer.getHeight()-1)/2., 1));
     }
 }
