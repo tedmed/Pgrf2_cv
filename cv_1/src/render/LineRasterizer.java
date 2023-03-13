@@ -43,7 +43,7 @@ public class LineRasterizer {
                 double t1 = (y - a.getPosition().getY()) / (b.getPosition().getY() - a.getPosition().getY());
                 //Done: použít lerp
                 Vertex vAB = lerp.lerp(a, b, t1);
-                zBuffer.drawWithZTest((int) vAB.getX(), y, vAB.getPosition().getZ(), a.getColor());
+                zBuffer.drawWithZTest((int) vAB.getX(), y, vAB.getPosition().getZ(), vAB.getColor());
             }
         }
         else {
@@ -58,7 +58,7 @@ public class LineRasterizer {
                 //Done: použít lerp
                 Vertex vAB = lerp.lerp(a, b, t1);
                 //Done: z, Col, uv, normála
-                zBuffer.drawWithZTest(x, (int) vAB.getY(), vAB.getPosition().getZ(), a.getColor());
+                zBuffer.drawWithZTest(x, (int) vAB.getY(), vAB.getPosition().getZ(), vAB.getColor());
             }
         }
     }

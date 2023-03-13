@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="home_work já kurva nevim. nic jsme skoro nedělali.. D:">
-      <change afterPath="$PROJECT_DIR$/cv_1/src/Objects/Cube.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cv_1/src/Objects/Pyramid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/Objects/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/Objects/Arrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/model/Solid.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/model/Solid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/raster/ZBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/raster/ZBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/render/LineRasterizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/LineRasterizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" afterDir="false" />
-    </list>
+    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="Ouuu, dobře já" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678397037422</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ouuu, dobře já">
+      <created>1678728743882</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678728743882</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -128,7 +123,8 @@
     <MESSAGE value="cv_2" />
     <MESSAGE value="cv_3" />
     <MESSAGE value="home_work já kurva nevim. nic jsme skoro nedělali.. D:" />
-    <option name="LAST_COMMIT_MESSAGE" value="home_work já kurva nevim. nic jsme skoro nedělali.. D:" />
+    <MESSAGE value="Ouuu, dobře já" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ouuu, dobře já" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
