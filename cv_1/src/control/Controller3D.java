@@ -2,6 +2,7 @@ package control;
 
 import Objects.Arrow;
 import Objects.Cube;
+import Objects.CurveWire;
 import Objects.Pyramid;
 import model.Solid;
 import raster.ImageBuffer;
@@ -9,6 +10,9 @@ import raster.ZBuffer;
 import render.LineRasterizer;
 import render.Renderer;
 import render.TriangleRasterizer;
+import shaders.Shader;
+import shaders.ShaderConstCol;
+import shaders.ShaderInterCol;
 import transforms.*;
 import view.Panel;
 
@@ -20,7 +24,7 @@ public class Controller3D implements Controller {
     private final TriangleRasterizer triangleRasterizer;
     private final LineRasterizer lineRasterizer;
     private Renderer renderer;
-    private Solid arrow, cube, pyramid;
+    private Solid arrow, cube, pyramid, cubic;
     private Mat4 proj;
     private Camera camera;
     private double cameraSpeed = 0.1;
@@ -32,6 +36,13 @@ public class Controller3D implements Controller {
         this.zBuffer = new ZBuffer(panel.getRaster());
         this.triangleRasterizer = new TriangleRasterizer(zBuffer);
         this.lineRasterizer = new LineRasterizer(zBuffer);
+        triangleRasterizer.setShader(new ShaderInterCol());
+//        triangleRasterizer.setShader(new ShaderConstCol());
+//
+//        Shader greenShader = v -> {
+//            return new Col(0x00ff00);
+//        };
+//        triangleRasterizer.setShader(greenShader);
         initObjects(panel.getRaster());
         initListeners();
         redraw();
@@ -42,6 +53,7 @@ public class Controller3D implements Controller {
         arrow = new Arrow();
         cube = new Cube();
         pyramid = new Pyramid();
+        cubic = new CurveWire();
     }
 
     @Override
@@ -56,9 +68,9 @@ public class Controller3D implements Controller {
 
         oldAz = 15;
         oldZen = -20;
-        x = 0;
-        y = 0;
-        z = 1;
+        x = -8;
+        y = -2;
+        z = 3;
 
         panel.requestFocus();
         panel.requestFocusInWindow();
@@ -138,8 +150,9 @@ public class Controller3D implements Controller {
         renderer.setView(camera.getViewMatrix());
 //        triangleRasterizer.rasterize(new Vertex(1,1,0), new Vertex(-1,0,0), new Vertex(0,-1,0), 0xff00ff);
         renderer.render(arrow);
-        renderer.render(cube);
-        renderer.render(pyramid);
+//        renderer.render(cube);
+//        renderer.render(pyramid);
+        renderer.render(cubic);
 //        triangleRasterizer.rasterize(new Point3D(-1,1,0), new Point3D(1,0,0), new Point3D(0,-1,0), 0x00ff00);
 //        zBuffer.drawWithZTest(10,10,0.5,new Col(0x00ff00));
 //        zBuffer.drawWithZTest(10,10,0.2,new Col(0xff0000));

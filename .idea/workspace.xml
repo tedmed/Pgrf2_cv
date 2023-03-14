@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="Ouuu, dobře já" />
+    <list default="true" id="92e43690-7429-4221-8132-1d4d9e5ec575" name="Changes" comment="ok">
+      <change afterPath="$PROJECT_DIR$/cv_1/src/Objects/CurveWire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/Objects/PatchWire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/shaders/Shader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/shaders/ShaderConstCol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cv_1/src/shaders/ShaderInterCol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/control/Controller3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/model/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cv_1/src/render/TriangleRasterizer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -115,8 +126,26 @@
       <option name="project" value="LOCAL" />
       <updated>1678728743882</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ok">
+      <created>1678730484829</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678730484829</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start" />
@@ -124,7 +153,8 @@
     <MESSAGE value="cv_3" />
     <MESSAGE value="home_work já kurva nevim. nic jsme skoro nedělali.. D:" />
     <MESSAGE value="Ouuu, dobře já" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ouuu, dobře já" />
+    <MESSAGE value="ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

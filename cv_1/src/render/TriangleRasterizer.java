@@ -3,6 +3,9 @@ package render;
 import model.Lerp;
 import model.Vertex;
 import raster.ZBuffer;
+import shaders.Shader;
+import shaders.ShaderConstCol;
+import shaders.ShaderInterCol;
 import transforms.Col;
 import transforms.Point3D;
 import transforms.Vec3D;
@@ -12,11 +15,17 @@ import java.awt.*;
 public class TriangleRasterizer {
     private final ZBuffer zBuffer;
     private final Lerp<Vertex> lerp;
+    private Shader shader;
 
     public TriangleRasterizer(ZBuffer zBuffer) {
         this.zBuffer = zBuffer;
         this.lerp = new Lerp<>();
     }
+
+    public void setShader(Shader shader) {
+        this.shader = shader;
+    }
+
     public void rasterize(Vertex v1, Vertex v2, Vertex v3){
 
         //Done: transformace ve Vertexu
@@ -74,7 +83,7 @@ public class TriangleRasterizer {
                 //Done: použít lerp
                 Vertex v = lerp.lerp(vAB, vAC, tf);
                 // TODO: z, Col, uv, normála
-                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), v.getColor());
+                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), shader.shade(v));
             }
         }
 
@@ -100,7 +109,7 @@ public class TriangleRasterizer {
                 //Done: použít lerp
                 Vertex v = lerp.lerp(vBC, vAC, tf);
                 // TODO: z, Col, uv, normála
-                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), v.getColor());
+                zBuffer.drawWithZTest(x, y, v.getPosition().getZ(), shader.shade(v));
             }
         }
     }

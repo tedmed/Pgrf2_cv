@@ -4,6 +4,9 @@ import model.Lerp;
 import model.Part;
 import model.Solid;
 import model.Vertex;
+import shaders.Shader;
+import shaders.ShaderConstCol;
+import shaders.ShaderInterCol;
 import transforms.Mat4;
 import transforms.Point3D;
 
@@ -80,6 +83,10 @@ public class Renderer {
     }
 
     private void renderLine(Vertex a, Vertex b){
+//        shaderInter.shade(a);
+//        shaderInter.shade(b);
+//        shaderConst.shade(a);
+//        shaderConst.shade(b);
         if((a.getX() > a.getW() && b.getX() > b.getW()) ||
                 (-a.getW() > a.getX() && -b.getW() > b.getX()) ||
                 (a.getY() > a.getW() && b.getY() > b.getW()) ||
